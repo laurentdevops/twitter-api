@@ -32,16 +32,17 @@ node {
 			} 
 		}
 	}
-      /*
 	stage('Sonar') {
-		 withSonarQubeEnv('Sonar') {
-			if(isUnix()) {
- 				sh "mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=twitter-api" 
-			} else { 
- 				bat "mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=twitter-api" 
+		 withMaven(maven: 'maven') {
+			 withSonarQubeEnv('Sonar') {
+				if(isUnix()) {
+	 				sh "mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=laurent-organisation-twitterproject_laurent-orga-twit-proj" 
+				} else { 
+	 				bat "mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=laurent-organisation-twitterproject_laurent-orga-twit-proj" 
+				} 
 			} 
 		}
-	} */
+	} 
 	
 	stage('Build Docker Image') {
 		withMaven(maven: 'maven') {
